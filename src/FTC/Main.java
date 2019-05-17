@@ -18,7 +18,7 @@ import java.io.*;
  * @author njche
  */
 public class Main extends javax.swing.JFrame {
-
+    
     // declarations
     // departure airport
     private final String departureAirport = JOptionPane.showInputDialog("Please enter your departure airport");
