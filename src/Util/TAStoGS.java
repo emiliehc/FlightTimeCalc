@@ -5,6 +5,8 @@
  */
 package Util;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author njche
@@ -180,13 +182,13 @@ public class TAStoGS extends javax.swing.JFrame {
         double TAS = Double.parseDouble(txtTAS.getText());
         double targetCrs = Double.parseDouble(txtCrs.getText());
         double driftAngle;
-        double trk;
+        double trk = 0;
         double GS;
         double hdg = targetCrs;
         
         
         int count = 0;
-        while (count < 100) {
+        while (count < 3000) {
             count ++;
             // calculate the angle difference
             double angleDifference = WD - hdg;
@@ -210,13 +212,22 @@ public class TAStoGS extends javax.swing.JFrame {
             //System.out.println(driftAngle);
             //System.out.println(trk);
             
+            
             // show the result
-            txtGS.setText(Double.toString(GS));
-            txtHdg.setText(Double.toString(hdg));
-            System.out.println(GS + "\t" + hdg);
+            txtGS.setText(Formatting.dfNum2.format(GS));
+            txtHdg.setText(Formatting.dfNum1.format(hdg < 0 ? 360 + hdg : hdg));
+            System.out.println(GS + "\t" + hdg + "\t" + trk);
             // all required air data is obtained, start the simulation
             
             hdg = hdg + (targetCrs - trk);
+            
+        }
+        
+        // disregard the results if the track is unable to stablise
+        if (Integer.parseInt(Formatting.dfNum0.format(trk)) != (int)targetCrs) {
+            JOptionPane.showMessageDialog(null, "Unable to finish the calculation", "Error", JOptionPane.ERROR_MESSAGE);
+            txtGS.setText("");
+            txtHdg.setText("");
         }
     }//GEN-LAST:event_btnCalculateActionPerformed
 
