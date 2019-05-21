@@ -172,7 +172,7 @@ public class TAStoGS extends javax.swing.JFrame {
     private void txtTASActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTASActionPerformed
         // TODO add your handling code here:
 
-        
+
     }//GEN-LAST:event_txtTASActionPerformed
 
     private void btnCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateActionPerformed
@@ -185,65 +185,78 @@ public class TAStoGS extends javax.swing.JFrame {
         double trk = 0;
         double GS;
         double hdg = targetCrs;
-        
-        
+
         int count = 0;
         while (count < 30000) {
-            count ++;
+            count++;
             // calculate the angle difference
             double angleDifference = WD - hdg;
             //System.out.println(angleDifference);
-            
+
             // separate the wind components
             double htWind = WS * Math.cos(Math.toRadians(angleDifference));
             double xWind = WS * Math.sin(Math.toRadians(angleDifference));
             //System.out.println(htWind);
             //System.out.println(xWind);
-            
+
             // calculate the real ground speed
             double TASafterHTwind = TAS - htWind;
             GS = Math.sqrt(Math.pow(TASafterHTwind, 2) + Math.pow(xWind, 2));
             //System.out.println(GS);
-            
+
             // calculate the drift angle
             driftAngle = -Math.toDegrees(Math.atan(xWind / TASafterHTwind));
             // calculate the track
             trk = hdg + driftAngle;
             //System.out.println(driftAngle);
             //System.out.println(trk);
-            
-            
+
             // show the result
             txtGS.setText(Formatting.dfNum2.format(GS));
             txtHdg.setText(Formatting.dfNum1.format(hdg < 0 ? 360 + hdg : hdg));
-            
 
+            if (Math.abs(trk - targetCrs) < 0.001) {
+                break;
+            }
+            
             System.out.println(GS + "\t" + hdg + "\t" + trk);
             // all required air data is obtained, start the simulation
-            
 
             //hdg = hdg + (targetCrs - trk);
             if (targetCrs > trk) {
-                if (targetCrs - trk > 4) {
+                if (targetCrs - trk > 10) {
+                    hdg += 1;
+                } else if (targetCrs - trk > 1) {
                     hdg += 0.1;
-                } else {
+                } else if (targetCrs - trk > 0.1) {
+                    hdg += 0.01;
+                } else if (targetCrs - trk > 0.01) {
+                    hdg += 0.001;
+                } else if (targetCrs - trk > 0.001) {
                     hdg += 0.0001;
+                } else {
+                    hdg += 0.00001;
                 }
             } else if (targetCrs < trk) {
-                if (targetCrs - trk < -2) {
-                    hdg -= 0.01;
-                } else if (targetCrs - trk < -5) {
+                if (targetCrs - trk < -10) {
+                    hdg -= 1.0;
+                } else if (targetCrs - trk < -1) {
                     hdg -= 0.1;
-                } 
-                else {
+                } else if (targetCrs - trk < -0.1) {
+                    hdg -= 0.01;
+                } else if (targetCrs - trk < -0.01) {
+                    hdg -= 0.001;
+                } else if (targetCrs - trk < -0.001) {
                     hdg -= 0.0001;
+                } else {
+                    hdg -= 0.00001;
                 }
             }
-            
+
         }
-        
+
         // disregard the results if the track is unable to stablise
-        if (Integer.parseInt(Formatting.dfNum0.format(trk)) != (int)targetCrs) {
+        if (Integer.parseInt(Formatting.dfNum0.format(trk)) != (int) targetCrs) {
             JOptionPane.showMessageDialog(null, "Unable to finish the calculation", "Error", JOptionPane.ERROR_MESSAGE);
             txtGS.setText("");
             txtHdg.setText("");
