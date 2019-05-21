@@ -188,7 +188,7 @@ public class TAStoGS extends javax.swing.JFrame {
         
         
         int count = 0;
-        while (count < 3000) {
+        while (count < 30000) {
             count ++;
             // calculate the angle difference
             double angleDifference = WD - hdg;
@@ -216,10 +216,29 @@ public class TAStoGS extends javax.swing.JFrame {
             // show the result
             txtGS.setText(Formatting.dfNum2.format(GS));
             txtHdg.setText(Formatting.dfNum1.format(hdg < 0 ? 360 + hdg : hdg));
+            
+
             System.out.println(GS + "\t" + hdg + "\t" + trk);
             // all required air data is obtained, start the simulation
             
-            hdg = hdg + (targetCrs - trk);
+
+            //hdg = hdg + (targetCrs - trk);
+            if (targetCrs > trk) {
+                if (targetCrs - trk > 4) {
+                    hdg += 0.1;
+                } else {
+                    hdg += 0.0001;
+                }
+            } else if (targetCrs < trk) {
+                if (targetCrs - trk < -2) {
+                    hdg -= 0.01;
+                } else if (targetCrs - trk < -5) {
+                    hdg -= 0.1;
+                } 
+                else {
+                    hdg -= 0.0001;
+                }
+            }
             
         }
         
