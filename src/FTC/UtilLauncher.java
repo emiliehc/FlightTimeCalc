@@ -28,6 +28,8 @@ public class UtilLauncher extends javax.swing.JFrame {
     private void initComponents() {
 
         btnTAStoGS = new javax.swing.JButton();
+        btnFlightTime = new javax.swing.JButton();
+        btnDensityAltitude = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Utilities");
@@ -40,13 +42,30 @@ public class UtilLauncher extends javax.swing.JFrame {
             }
         });
 
+        btnFlightTime.setText("Flight Time");
+        btnFlightTime.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFlightTimeActionPerformed(evt);
+            }
+        });
+
+        btnDensityAltitude.setText("Density Altitude");
+        btnDensityAltitude.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDensityAltitudeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnTAStoGS, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnTAStoGS, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                    .addComponent(btnFlightTime, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                    .addComponent(btnDensityAltitude, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -54,7 +73,11 @@ public class UtilLauncher extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnTAStoGS, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(257, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnFlightTime, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnDensityAltitude, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(181, Short.MAX_VALUE))
         );
 
         pack();
@@ -66,6 +89,20 @@ public class UtilLauncher extends javax.swing.JFrame {
         ttg.pack();
         ttg.setVisible(true);
     }//GEN-LAST:event_btnTAStoGSActionPerformed
+
+    private void btnFlightTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFlightTimeActionPerformed
+        // TODO add your handling code here:
+        FlightTime ft = new FlightTime();
+        ft.pack();
+        ft.setVisible(true);
+    }//GEN-LAST:event_btnFlightTimeActionPerformed
+
+    private void btnDensityAltitudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDensityAltitudeActionPerformed
+        // TODO add your handling code here:
+        DensityAltitude da = new DensityAltitude();
+        da.pack();
+        da.setVisible(true);
+    }//GEN-LAST:event_btnDensityAltitudeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -103,6 +140,8 @@ public class UtilLauncher extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDensityAltitude;
+    private javax.swing.JButton btnFlightTime;
     private javax.swing.JButton btnTAStoGS;
     // End of variables declaration//GEN-END:variables
 }
