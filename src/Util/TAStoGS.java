@@ -223,6 +223,7 @@ public class TAStoGS extends javax.swing.JFrame {
             // all required air data is obtained, start the simulation
 
             //hdg = hdg + (targetCrs - trk);
+            
             if (targetCrs > trk) {
                 if (targetCrs - trk > 10) {
                     hdg += 1;
@@ -252,6 +253,8 @@ public class TAStoGS extends javax.swing.JFrame {
                     hdg -= 0.00001;
                 }
             }
+            
+            
 
         }
 
