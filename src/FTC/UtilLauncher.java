@@ -30,6 +30,7 @@ public class UtilLauncher extends javax.swing.JFrame {
         btnTAStoGS = new javax.swing.JButton();
         btnFlightTime = new javax.swing.JButton();
         btnDensityAltitude = new javax.swing.JButton();
+        btnPressAltitude = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Utilities");
@@ -56,6 +57,13 @@ public class UtilLauncher extends javax.swing.JFrame {
             }
         });
 
+        btnPressAltitude.setText("Pressure Altitude");
+        btnPressAltitude.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPressAltitudeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -65,7 +73,8 @@ public class UtilLauncher extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnTAStoGS, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
                     .addComponent(btnFlightTime, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
-                    .addComponent(btnDensityAltitude, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE))
+                    .addComponent(btnDensityAltitude, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                    .addComponent(btnPressAltitude, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -77,7 +86,9 @@ public class UtilLauncher extends javax.swing.JFrame {
                 .addComponent(btnFlightTime, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDensityAltitude, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPressAltitude, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(143, Short.MAX_VALUE))
         );
 
         pack();
@@ -103,6 +114,13 @@ public class UtilLauncher extends javax.swing.JFrame {
         da.pack();
         da.setVisible(true);
     }//GEN-LAST:event_btnDensityAltitudeActionPerformed
+
+    private void btnPressAltitudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPressAltitudeActionPerformed
+        // TODO add your handling code here:
+        PressureAltitude pa = new PressureAltitude();
+        pa.pack();
+        pa.setVisible(true);
+    }//GEN-LAST:event_btnPressAltitudeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,6 +160,7 @@ public class UtilLauncher extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDensityAltitude;
     private javax.swing.JButton btnFlightTime;
+    private javax.swing.JButton btnPressAltitude;
     private javax.swing.JButton btnTAStoGS;
     // End of variables declaration//GEN-END:variables
 }

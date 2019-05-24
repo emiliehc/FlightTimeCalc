@@ -18,6 +18,8 @@ public class Formatting {
     public static DecimalFormat dfNum1 = new DecimalFormat("###,##0.0");
     public static DecimalFormat dfNum2 = new DecimalFormat("###,##0.00");
     public static DecimalFormat dfNum3 = new DecimalFormat("###,##0.000");
+    public static DecimalFormat dfPressInHg = new DecimalFormat("#0.00");
+    public static DecimalFormat dfPressHPa = new DecimalFormat("#000");
     
     public static void main(String[] args) {
         

@@ -33,6 +33,7 @@
                   <Component id="btnTAStoGS" pref="159" max="32767" attributes="0"/>
                   <Component id="btnFlightTime" alignment="1" pref="159" max="32767" attributes="0"/>
                   <Component id="btnDensityAltitude" alignment="0" pref="159" max="32767" attributes="0"/>
+                  <Component id="btnPressAltitude" alignment="0" pref="159" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -47,7 +48,9 @@
               <Component id="btnFlightTime" min="-2" pref="32" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnDensityAltitude" min="-2" pref="32" max="-2" attributes="0"/>
-              <EmptySpace pref="181" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnPressAltitude" min="-2" pref="32" max="-2" attributes="0"/>
+              <EmptySpace pref="143" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -75,6 +78,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDensityAltitudeActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnPressAltitude">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pressure Altitude"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPressAltitudeActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
