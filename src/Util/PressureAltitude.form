@@ -24,7 +24,6 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="pnlInput" alignment="1" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -38,6 +37,10 @@
                   <Component id="lblPressAlt" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="pnlInput" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="21" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -65,46 +68,19 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                          <Component id="lblPressMinUS" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="lblPressMaxUS" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Component id="lblPressMinMetric" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="lblPressMaxMetric" min="-2" pref="47" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                  <Component id="sldrPress" min="-2" pref="719" max="-2" attributes="0"/>
-                  <EmptySpace pref="43" max="32767" attributes="0"/>
+                  <Component id="sldrPress" min="-2" pref="405" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblPressMaxUS" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblPressMinUS" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Component id="sldrPress" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblPressMinMetric" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblPressMaxMetric" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="31" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -112,33 +88,13 @@
       <SubComponents>
         <Component class="javax.swing.JSlider" name="sldrPress">
           <Properties>
-            <Property name="maximum" type="int" value="3100"/>
-            <Property name="minimum" type="int" value="2800"/>
-            <Property name="value" type="int" value="2992"/>
+            <Property name="maximum" type="int" value="31500"/>
+            <Property name="minimum" type="int" value="28000"/>
+            <Property name="value" type="int" value="29920"/>
           </Properties>
           <Events>
             <EventHandler event="caretPositionChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="sldrPressCaretPositionChanged"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblPressMaxUS">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="31.00 inHg"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblPressMinUS">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="28.00 inHg"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblPressMinMetric">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="948 hPa"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblPressMaxMetric">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="1050 hPa"/>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>
