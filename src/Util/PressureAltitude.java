@@ -18,6 +18,7 @@ public class PressureAltitude extends javax.swing.JFrame {
     // declaration
     SyncPress sp = new SyncPress();
     double press = 29.92;
+    double pressAlt;
 
     /**
      * Creates new form PressureAltitude
@@ -45,6 +46,7 @@ public class PressureAltitude extends javax.swing.JFrame {
         lblPress = new javax.swing.JLabel();
         lblPressSel = new javax.swing.JLabel();
         lblPressSelMetric = new javax.swing.JLabel();
+        lblPressAlt = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pressure Altitude");
@@ -88,7 +90,7 @@ public class PressureAltitude extends javax.swing.JFrame {
             .addGroup(pnlInputLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(sldrPress, javax.swing.GroupLayout.PREFERRED_SIZE, 719, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         pnlInputLayout.setVerticalGroup(
             pnlInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,29 +108,30 @@ public class PressureAltitude extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        lblPress.setText("Atmospheric Pressure: ");
+        lblPress.setText("Altimeter Setting / QNH: ");
 
         lblPressSel.setText("29.92 inHg");
 
         lblPressSelMetric.setText("1013 hPa");
 
+        lblPressAlt.setText("Pressure Altitude: 0 ft");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlInput, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(pnlInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblPress)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblPressSel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblPressSelMetric)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(lblPressSelMetric))
+                    .addComponent(lblPressAlt))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,7 +143,9 @@ public class PressureAltitude extends javax.swing.JFrame {
                     .addComponent(lblPressSelMetric))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 112, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblPressAlt)
+                .addGap(0, 92, Short.MAX_VALUE))
         );
 
         pack();
@@ -196,6 +201,8 @@ public class PressureAltitude extends javax.swing.JFrame {
                     lblPressSel.setText(Formatting.dfPressInHg.format(press) + " inHg");
                     lblPressSelMetric.setText(Formatting.dfPressHPa.format(press * 33.86) + " hPa");
                     //System.out.println(press);
+                    pressAlt = 145366.45 * (1 - Math.pow(press / 29.92, 0.190284));
+                    lblPressAlt.setText("Pressure Altitude: " + Formatting.dfNum0.format(pressAlt) + " ft");
                     Thread.sleep(4);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(PressureAltitude.class.getName()).log(Level.SEVERE, null, ex);
@@ -206,6 +213,7 @@ public class PressureAltitude extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblPress;
+    private javax.swing.JLabel lblPressAlt;
     private javax.swing.JLabel lblPressMaxMetric;
     private javax.swing.JLabel lblPressMaxUS;
     private javax.swing.JLabel lblPressMinMetric;
