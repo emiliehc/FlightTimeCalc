@@ -16,6 +16,7 @@ public class PressureAltitude extends javax.swing.JFrame {
     SyncPress sp = new SyncPress();
     double press = 29.92;
     double pressAlt;
+    double fieldElv = 0;
 
     /**
      * Creates new form PressureAltitude
@@ -34,43 +35,17 @@ public class PressureAltitude extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnlInput = new javax.swing.JPanel();
-        sldrPress = new javax.swing.JSlider();
         lblPress = new javax.swing.JLabel();
         lblPressSel = new javax.swing.JLabel();
         lblPressSelMetric = new javax.swing.JLabel();
         lblPressAlt = new javax.swing.JLabel();
+        sldrFieldElv = new javax.swing.JSlider();
+        lblFieldElv = new javax.swing.JLabel();
+        sldrPress = new javax.swing.JSlider();
+        lblFieldElvFeet = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pressure Altitude");
-
-        sldrPress.setMaximum(31500);
-        sldrPress.setMinimum(28000);
-        sldrPress.setValue(29920);
-        sldrPress.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-                sldrPressCaretPositionChanged(evt);
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-            }
-        });
-
-        javax.swing.GroupLayout pnlInputLayout = new javax.swing.GroupLayout(pnlInput);
-        pnlInput.setLayout(pnlInputLayout);
-        pnlInputLayout.setHorizontalGroup(
-            pnlInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlInputLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(sldrPress, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pnlInputLayout.setVerticalGroup(
-            pnlInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlInputLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(sldrPress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
-        );
 
         lblPress.setText("Altimeter Setting / QNH: ");
 
@@ -80,6 +55,43 @@ public class PressureAltitude extends javax.swing.JFrame {
 
         lblPressAlt.setText("Pressure Altitude: 0 ft");
 
+        sldrFieldElv.setMaximum(50);
+        sldrFieldElv.setMinimum(-50);
+        sldrFieldElv.setValue(0);
+        sldrFieldElv.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                sldrFieldElvMouseReleased(evt);
+            }
+        });
+        sldrFieldElv.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                sldrFieldElvCaretPositionChanged(evt);
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+            }
+        });
+
+        lblFieldElv.setText("Field Elevation: ");
+
+        sldrPress.setMaximum(50);
+        sldrPress.setMinimum(-50);
+        sldrPress.setToolTipText("");
+        sldrPress.setValue(0);
+        sldrPress.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                sldrPressMouseReleased(evt);
+            }
+        });
+        sldrPress.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                sldrPressCaretPositionChanged(evt);
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+            }
+        });
+
+        lblFieldElvFeet.setText("0 ft");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -88,16 +100,25 @@ public class PressureAltitude extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblPress)
+                        .addComponent(lblFieldElv)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblPressSel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblPressSelMetric))
-                    .addComponent(lblPressAlt))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 21, Short.MAX_VALUE))
+                        .addComponent(lblFieldElvFeet)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(sldrPress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblPress)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblPressSel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblPressSelMetric))
+                                    .addComponent(lblPressAlt))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(sldrFieldElv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,10 +129,16 @@ public class PressureAltitude extends javax.swing.JFrame {
                     .addComponent(lblPressSel)
                     .addComponent(lblPressSelMetric))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sldrPress, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFieldElv)
+                    .addComponent(lblFieldElvFeet))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sldrFieldElv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                 .addComponent(lblPressAlt)
-                .addGap(0, 92, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -121,6 +148,20 @@ public class PressureAltitude extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_sldrPressCaretPositionChanged
+
+    private void sldrFieldElvCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_sldrFieldElvCaretPositionChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sldrFieldElvCaretPositionChanged
+
+    private void sldrFieldElvMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sldrFieldElvMouseReleased
+        // TODO add your handling code here:
+        sldrFieldElv.setValue(0);
+    }//GEN-LAST:event_sldrFieldElvMouseReleased
+
+    private void sldrPressMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sldrPressMouseReleased
+        // TODO add your handling code here:
+        sldrPress.setValue(0);
+    }//GEN-LAST:event_sldrPressMouseReleased
 
     /**
      * @param args the command line arguments
@@ -163,13 +204,15 @@ public class PressureAltitude extends javax.swing.JFrame {
         public void run() {
             while (true) {
                 try {
-                    press = sldrPress.getValue() / 1000.0;
+                    fieldElv += Math.pow(sldrFieldElv.getValue() / 10.0, 3.0);
+                    lblFieldElvFeet.setText(Formatting.dfNum0.format(fieldElv) + " ft");
+                    press += sldrPress.getValue() / 1000.0;
                     lblPressSel.setText(Formatting.dfPressInHg.format(press) + " inHg");
                     lblPressSelMetric.setText(Formatting.dfPressHPa.format(press * 33.86) + " hPa");
                     //System.out.println(press);
-                    pressAlt = 145366.45 * (1 - Math.pow(press / 29.92, 0.190284));
+                    pressAlt = 145366.45 * (1 - Math.pow(press / 29.92, 0.190284)) + fieldElv;
                     lblPressAlt.setText("Pressure Altitude: " + Formatting.dfNum0.format(pressAlt) + " ft");
-                    Thread.sleep(4);
+                    Thread.sleep(50);
                 } catch (InterruptedException ex) {
                     
                 }
@@ -178,11 +221,13 @@ public class PressureAltitude extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel lblFieldElv;
+    private javax.swing.JLabel lblFieldElvFeet;
     private javax.swing.JLabel lblPress;
     private javax.swing.JLabel lblPressAlt;
     private javax.swing.JLabel lblPressSel;
     private javax.swing.JLabel lblPressSelMetric;
-    private javax.swing.JPanel pnlInput;
+    private javax.swing.JSlider sldrFieldElv;
     private javax.swing.JSlider sldrPress;
     // End of variables declaration//GEN-END:variables
 }

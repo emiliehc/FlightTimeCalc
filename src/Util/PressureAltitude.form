@@ -27,20 +27,33 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="lblPress" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="lblFieldElv" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblPressSel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblPressSelMetric" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblFieldElvFeet" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="lblPressAlt" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="sldrPress" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblPress" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblPressSel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblPressSelMetric" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="lblPressAlt" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="sldrFieldElv" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="pnlInput" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="21" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -54,50 +67,22 @@
                   <Component id="lblPressSelMetric" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="pnlInput" min="-2" max="-2" attributes="0"/>
+              <Component id="sldrPress" min="-2" pref="23" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblFieldElv" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblFieldElvFeet" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="sldrFieldElv" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="88" max="32767" attributes="0"/>
               <Component id="lblPressAlt" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="92" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="pnlInput">
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                  <Component id="sldrPress" min="-2" pref="405" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                  <Component id="sldrPress" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="31" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JSlider" name="sldrPress">
-          <Properties>
-            <Property name="maximum" type="int" value="31500"/>
-            <Property name="minimum" type="int" value="28000"/>
-            <Property name="value" type="int" value="29920"/>
-          </Properties>
-          <Events>
-            <EventHandler event="caretPositionChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="sldrPressCaretPositionChanged"/>
-          </Events>
-        </Component>
-      </SubComponents>
-    </Container>
     <Component class="javax.swing.JLabel" name="lblPress">
       <Properties>
         <Property name="text" type="java.lang.String" value="Altimeter Setting / QNH: "/>
@@ -116,6 +101,39 @@
     <Component class="javax.swing.JLabel" name="lblPressAlt">
       <Properties>
         <Property name="text" type="java.lang.String" value="Pressure Altitude: 0 ft"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSlider" name="sldrFieldElv">
+      <Properties>
+        <Property name="maximum" type="int" value="50"/>
+        <Property name="minimum" type="int" value="-50"/>
+        <Property name="value" type="int" value="0"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="sldrFieldElvMouseReleased"/>
+        <EventHandler event="caretPositionChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="sldrFieldElvCaretPositionChanged"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblFieldElv">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Field Elevation: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSlider" name="sldrPress">
+      <Properties>
+        <Property name="maximum" type="int" value="50"/>
+        <Property name="minimum" type="int" value="-50"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="value" type="int" value="0"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="sldrPressMouseReleased"/>
+        <EventHandler event="caretPositionChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="sldrPressCaretPositionChanged"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblFieldElvFeet">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="0 ft"/>
       </Properties>
     </Component>
   </SubComponents>
